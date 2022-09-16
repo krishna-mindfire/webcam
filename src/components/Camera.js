@@ -60,10 +60,8 @@ export default function Camera() {
       <div className="container">
       
         <div className="webcam-video">
-          <div className="col-md-12 text-center">
-          <video width="100%" heigth="300px" onCanPlay={() => paintToCanvas()}
-              ref={videoRef}
-              className="player">
+          <div className="col-md-12">
+          <video width="100%" heigth="300px" onCanPlay={() => paintToCanvas()} ref={videoRef} className="player text-center">
             <source src="path-to-video.mp4#t=0.001" type="video/mp4" />
           </video>
               {/* <video width="100%" heigth="300px"
@@ -72,28 +70,32 @@ export default function Camera() {
               className="player"
               /> */}
               <hr/>
-              <div className="col-md-6">
-              <input type="text" className="form-control" onChange={handleName} />  
+             
+          <div className="col-md-6">
+            <form>
+              <div class="form-group">
+                <label for="power">Power:</label>
+                <input type="text" className="form-control" onChange={handleName} />  
               </div>
-              <div className="col-md-6">
-
-              <button onClick={() => takePhoto()} className="btn btn-info">Take a photo</button>&nbsp;
-              {
-                  downloadLink ?  <a href={downloadLink } className="btn btn-success" download={name}>Download</a> : <a className="btn btn-danger" disabled >Download</a>
-                }
-              </div>
-              <hr/>
+            </form>
           </div>
+          <div className="col-md-6">
+
+          <button onClick={() => takePhoto()} className="btn btn-info">Take a photo</button>&nbsp;
+          {
+              downloadLink && name ?  <a href={downloadLink ?? '#'} className="btn btn-success" download={name}>Download</a> : <a className="btn btn-danger" disabled >Download</a>
+            }
+          </div>
+          <hr/>
+        </div>
           
           <div className="col-md-12 mt-4">
-                   
-                
-                   <canvas style={{'display': 'none'}} id="canvas" ref={photoRef} className="photo" />
-                   <div className="photo-booth mt-5">
-                     <div ref={stripRef} className="strip" />
-                   </div>
-                 </div>
-        </div>
+            <canvas style={{'display': 'none'}} id="canvas" ref={photoRef} className="photo" />
+            <div className="photo-booth mt-5">
+              <div ref={stripRef} className="strip" />
+              </div>
+            </div>
+          </div>
       </div>
     );
 }
