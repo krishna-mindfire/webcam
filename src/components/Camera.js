@@ -6,6 +6,7 @@ export default function Camera() {
     const videoRef = useRef(null);
     const photoRef = useRef(null);
     const stripRef = useRef(null);
+    const [downloadLink, setDownloadLink] = useState('');
     const [name, setName] = useState('')
     useEffect(() => {
         navigator.mediaDevices
@@ -47,8 +48,7 @@ export default function Camera() {
       let strip = stripRef.current;
       strip.innerHTML = '';
       const data = photo.toDataURL("image/jpeg");
-  
-      console.warn(data);
+      setDownloadLink(data);
       const link = document.createElement("a");
       link.href = data;
       link.setAttribute("download", name);
@@ -76,7 +76,11 @@ export default function Camera() {
               <input type="text" className="form-control" onChange={handleName} />  
               </div>
               <div className="col-md-6">
-              <button onClick={() => takePhoto()} className="btn btn-info">Take a photo</button>
+
+              <button onClick={() => takePhoto()} className="btn btn-info">Take a photo</button>&nbsp;
+              {
+                  downloadLink ?  <a href={downloadLink } className="btn btn-success" download={name}>Download</a> : <a className="btn btn-danger" disabled >Download</a>
+                }
               </div>
               <hr/>
           </div>
