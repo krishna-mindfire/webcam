@@ -61,11 +61,16 @@ export default function Camera() {
       
         <div className="webcam-video">
           <div className="col-md-12 text-center">
-              <video width="100%" heigth="300px"
+          <video width="100%" heigth="300px" onCanPlay={() => paintToCanvas()}
+              ref={videoRef}
+              className="player">
+            <source src="path-to-video.mp4#t=0.001" type="video/mp4" />
+          </video>
+              {/* <video width="100%" heigth="300px"
               onCanPlay={() => paintToCanvas()}
               ref={videoRef}
               className="player"
-              />
+              /> */}
               <hr/>
               <div className="col-md-6">
               <input type="text" className="form-control" onChange={handleName} />  
