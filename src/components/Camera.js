@@ -30,8 +30,8 @@ export default function Camera() {
       let photo = photoRef.current;
       let ctx = photo.getContext("2d");
   
-      const width = 800;
-      const height = 640;
+      const width = 1130;
+      const height = 840;
       photo.width = width;
       photo.height = height;
   
@@ -60,17 +60,30 @@ export default function Camera() {
       <div className="container">
       
         <div className="webcam-video">
-          <button onClick={() => takePhoto()}>Take a photo</button>
-          <video
-            onCanPlay={() => paintToCanvas()}
-            ref={videoRef}
-            className="player"
-          />
-          <input type="text" onChange={handleName} />
-          <canvas style={{'display': 'none'}} ref={photoRef} className="photo" />
-          <div className="photo-booth">
-            <div ref={stripRef} className="strip" />
+          <div className="col-md-12 text-center">
+              <video width="100%" heigth="300px"
+              onCanPlay={() => paintToCanvas()}
+              ref={videoRef}
+              className="player"
+              />
+              <hr/>
+              <div className="col-md-6">
+              <input type="text" className="form-control" onChange={handleName} />  
+              </div>
+              <div className="col-md-6">
+              <button onClick={() => takePhoto()} className="btn btn-info">Take a photo</button>
+              </div>
+              <hr/>
           </div>
+          
+          <div className="col-md-12 mt-4">
+                   
+                
+                   <canvas style={{'display': 'none'}} ref={photoRef} className="photo" />
+                   <div className="photo-booth mt-5">
+                     <div ref={stripRef} className="strip" />
+                   </div>
+                 </div>
         </div>
       </div>
     );
