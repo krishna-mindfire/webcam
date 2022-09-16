@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/github.io/react-webcam-app/static/css/main.073c9b0a.css",
-    "main.js": "/github.io/react-webcam-app/static/js/main.426c7ba4.js",
-    "static/js/787.5ee8b7f4.chunk.js": "/github.io/react-webcam-app/static/js/787.5ee8b7f4.chunk.js",
-    "static/media/logo.svg": "/github.io/react-webcam-app/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/github.io/react-webcam-app/index.html",
-    "main.073c9b0a.css.map": "/github.io/react-webcam-app/static/css/main.073c9b0a.css.map",
-    "main.426c7ba4.js.map": "/github.io/react-webcam-app/static/js/main.426c7ba4.js.map",
-    "787.5ee8b7f4.chunk.js.map": "/github.io/react-webcam-app/static/js/787.5ee8b7f4.chunk.js.map"
+    "main.css": "/github.io/webcam/static/css/main.073c9b0a.css",
+    "main.js": "/github.io/webcam/static/js/main.6219aecf.js",
+    "static/js/787.5ee8b7f4.chunk.js": "/github.io/webcam/static/js/787.5ee8b7f4.chunk.js",
+    "static/media/logo.svg": "/github.io/webcam/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/github.io/webcam/index.html",
+    "main.073c9b0a.css.map": "/github.io/webcam/static/css/main.073c9b0a.css.map",
+    "main.6219aecf.js.map": "/github.io/webcam/static/js/main.6219aecf.js.map",
+    "787.5ee8b7f4.chunk.js.map": "/github.io/webcam/static/js/787.5ee8b7f4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.426c7ba4.js"
+    "static/js/main.6219aecf.js"
   ]
 }
