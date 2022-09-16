@@ -79,7 +79,7 @@ export default function Camera() {
           <div className="col-md-12 mt-4">
                    
                 
-                   <canvas style={{'display': 'none'}} ref={photoRef} className="photo" />
+                   <canvas style={{'display': 'none'}} id="canvas" ref={photoRef} className="photo" />
                    <div className="photo-booth mt-5">
                      <div ref={stripRef} className="strip" />
                    </div>
