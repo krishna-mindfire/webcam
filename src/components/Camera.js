@@ -37,15 +37,15 @@ export default function Camera() {
       const height = 840;
       photo.width = width;
       photo.height = height;
-      if(cameraMode.facingMode == 'environment')
+      if(cameraMode.facingMode != 'environment')
       {
         ctx.translate(width, 0);
         ctx.scale(-1, 1);
       }
       else
       {
-        ctx.translate(width, 0);
-        ctx.scale(-1, 1);
+        // ctx.translate(width, 0);
+        // ctx.scale(-1, 1);
         //ctx.resetTransform();
       }
       
