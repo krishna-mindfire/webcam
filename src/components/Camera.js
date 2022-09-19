@@ -35,10 +35,10 @@ export default function Camera() {
       const height = 840;
       photo.width = width;
       photo.height = height;
-  
+      ctx.translate(width, 0);
+      ctx.scale(-1, 1);
       return setInterval(() => {
-        ctx.translate(width, 0);
-        ctx.scale(-1, 1);
+       
         ctx.drawImage(video, 0, 0, width, height);
         ctx.getImageData(0, 0, width, height);
         
