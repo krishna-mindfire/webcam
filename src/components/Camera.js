@@ -66,7 +66,7 @@ export default function Camera() {
       {
         
         element.classList.remove("player");
-        setFlipCamera('user')
+        setFlipCamera('')
       }
       else { 
         element.classList.add("player");
