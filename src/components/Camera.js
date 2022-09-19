@@ -61,7 +61,7 @@ export default function Camera() {
   
     const flipCamera = () => {
       var element = document.getElementById("player");
-      //element.classList.remove("player");
+      element.classList.remove("player");
       //setFlipCamera({...cameraMode, ['facingMode'] : 'user' })
       // var element = document.getElementById("player");
       // if(cameraMode.facingMode === 'user') 
