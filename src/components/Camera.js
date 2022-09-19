@@ -60,22 +60,24 @@ export default function Camera() {
     };
   
     const flipCamera = () => {
-
       var element = document.getElementById("player");
-      if(cameraMode.facingMode === 'user') 
-      {
+      //element.classList.remove("player");
+      //setFlipCamera({...cameraMode, ['facingMode'] : 'user' })
+      // var element = document.getElementById("player");
+      // if(cameraMode.facingMode === 'user') 
+      // {
         
-        element.classList.add("player");
-        setFlipCamera({...cameraMode, ['facingMode'] : 'environment' })
+      //   element.classList.add("player");
+      //   setFlipCamera({...cameraMode, ['facingMode'] : 'environment' })
         
-      }
-      else { 
+      // }
+      // else { 
 
-        element.classList.remove("player");
-        setFlipCamera({...cameraMode, ['facingMode'] : 'user' })
-      }
+      //   element.classList.remove("player");
+      //   setFlipCamera({...cameraMode, ['facingMode'] : 'user' })
+      // }
 
-      console.log(cameraMode.facingMode);
+      // console.log(cameraMode.facingMode);
     }
     return (
       <div className="container">
