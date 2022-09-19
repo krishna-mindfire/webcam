@@ -50,7 +50,7 @@ export default function Camera() {
       const data = photo.toDataURL("image/jpeg");
       setDownloadLink(data);
       const link = document.createElement("a");
-      link.href = data;
+      //link.href = data;
       link.setAttribute("download", name);
       link.innerHTML = `<img src='${data}' alt='thumbnail'/>`;
       strip.insertBefore(link, strip.firstChild);
