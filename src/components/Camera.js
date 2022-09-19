@@ -11,7 +11,7 @@ export default function Camera() {
     const [name, setName] = useState('')
     useEffect(() => {
         navigator.mediaDevices
-        .getUserMedia({ video: { cameraMode, width: 300 } })
+        .getUserMedia({ video: { facingMode: cameraMode.facingMode, width: 300 } })
         .then(stream => {
           let video = videoRef.current;
           video.srcObject = stream;
@@ -61,6 +61,7 @@ export default function Camera() {
   
     const flipCamera = () => {
 
+      console.log(cameraMode.facingMode);
       var element = document.getElementById("player");
       if(cameraMode.facingMode === 'user') 
       {
@@ -74,7 +75,6 @@ export default function Camera() {
         element.classList.remove("player");
         setFlipCamera({facingMode : 'user'})
       }
-      console.log(cameraMode);
     }
     return (
       <div className="container">
