@@ -10,7 +10,7 @@ export default function Camera() {
     const [name, setName] = useState('')
     useEffect(() => {
         navigator.mediaDevices
-        .getUserMedia({ video: { width: 300 } })
+        .getUserMedia({ video: { facingMode: "environment", width: 300 } })
         .then(stream => {
           let video = videoRef.current;
           video.srcObject = stream;
