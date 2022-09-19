@@ -7,8 +7,9 @@ export default function Camera() {
     const photoRef = useRef(null);
     const stripRef = useRef(null);
     const [downloadLink, setDownloadLink] = useState('');
-    const [cameraMode, setFlipCamera] = useState({facingMode : 'environment'});
     const [name, setName] = useState('')
+    const [cameraMode, setFlipCamera] = useState({facingMode : 'environment'});
+
     useEffect(() => {
         navigator.mediaDevices
         .getUserMedia({ video: { facingMode: cameraMode.facingMode, width: 300 } })
@@ -36,8 +37,18 @@ export default function Camera() {
       const height = 840;
       photo.width = width;
       photo.height = height;
-      ctx.translate(width, 0);
-      ctx.scale(-1, 1);
+      if(cameraMode.facingMode == 'environment')
+      {
+        ctx.translate(width, 0);
+        ctx.scale(-1, 1);
+      }
+      else
+      {
+        ctx.translate(width, 0);
+        ctx.scale(-1, 1);
+        //ctx.resetTransform();
+      }
+      
       return setInterval(() => {
        
         ctx.drawImage(video, 0, 0, width, height);
@@ -58,24 +69,23 @@ export default function Camera() {
       link.innerHTML = `<img src='${data}' alt='thumbnail'/>`;
       strip.insertBefore(link, strip.firstChild);
     };
-  
-    const flipCamera = () => {
-      var element = document.getElementById("player");
-      element.classList.remove("player");
+    const flipCamera = (mode) => {
+      console.log(mode);
+      //element.classList.remove("player");
       //setFlipCamera({...cameraMode, ['facingMode'] : 'user' })
-      // var element = document.getElementById("player");
-      // if(cameraMode.facingMode === 'user') 
-      // {
+      var element = document.getElementById("player");
+      if(cameraMode.facingMode === 'user') 
+      {
         
-      //   element.classList.add("player");
-      //   setFlipCamera({...cameraMode, ['facingMode'] : 'environment' })
+        element.classList.add("player");
+        setFlipCamera({...cameraMode, ['facingMode'] : 'environment' })
         
-      // }
-      // else { 
+      }
+      else { 
 
-      //   element.classList.remove("player");
-      //   setFlipCamera({...cameraMode, ['facingMode'] : 'user' })
-      // }
+        element.classList.remove("player");
+        setFlipCamera({...cameraMode, ['facingMode'] : 'user' })
+      }
 
       // console.log(cameraMode.facingMode);
     }
@@ -103,7 +113,7 @@ export default function Camera() {
             </form>
           </div>
           <div className="col-md-6">
-          <button onClick={() => flipCamera()} className="btn btn-info">Flip Camera</button>&nbsp;
+          <button onClick={() => flipCamera(cameraMode.facingMode)} className="btn btn-info">Flip Camera</button>&nbsp;
           <button onClick={() => takePhoto()} className="btn btn-info">Take a photo</button>&nbsp;
           {
               downloadLink && name ?  <a href={downloadLink ?? '#'} className="btn btn-success" download={name}>Download</a> : <a className="btn btn-danger" disabled >Download</a>
