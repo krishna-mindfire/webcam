@@ -7,11 +7,11 @@ export default function Camera() {
     const photoRef = useRef(null);
     const stripRef = useRef(null);
     const [downloadLink, setDownloadLink] = useState('');
-    const [cameraMode, setFlipCamera] = useState('environment');
+    const [cameraMode, setFlipCamera] = useState({facingMode : 'environment'});
     const [name, setName] = useState('')
     useEffect(() => {
         navigator.mediaDevices
-        .getUserMedia({ video: { facingMode: cameraMode, width: 300 } })
+        .getUserMedia({ video: { cameraMode, width: 300 } })
         .then(stream => {
           let video = videoRef.current;
           video.srcObject = stream;
@@ -62,16 +62,17 @@ export default function Camera() {
     const flipCamera = () => {
 
       var element = document.getElementById("player");
-      if(cameraMode == 'environment') 
+      if(cameraMode.facingMode == 'environment') 
       {
         
         element.classList.remove("player");
-        setFlipCamera('')
+        setFlipCamera({facingMode : 'user'})
       }
       else { 
         element.classList.add("player");
-        setFlipCamera('environment')
+        setFlipCamera({facingMode : 'environment'})
       }
+      console.log(cameraMode);
     }
     return (
       <div className="container">
