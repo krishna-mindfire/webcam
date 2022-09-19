@@ -37,9 +37,11 @@ export default function Camera() {
       photo.height = height;
   
       return setInterval(() => {
-       
+        ctx.translate(width, 0);
+        ctx.scale(-1, 1);
         ctx.drawImage(video, 0, 0, width, height);
         ctx.getImageData(0, 0, width, height);
+        
       }, 0);
     };
   
