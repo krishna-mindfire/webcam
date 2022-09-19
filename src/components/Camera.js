@@ -7,10 +7,11 @@ export default function Camera() {
     const photoRef = useRef(null);
     const stripRef = useRef(null);
     const [downloadLink, setDownloadLink] = useState('');
+    const [cameraMode, setFlipCamera] = useState('environment');
     const [name, setName] = useState('')
     useEffect(() => {
         navigator.mediaDevices
-        .getUserMedia({ video: { facingMode: "environment", width: 300 } })
+        .getUserMedia({ video: { facingMode: cameraMode, width: 300 } })
         .then(stream => {
           let video = videoRef.current;
           video.srcObject = stream;
@@ -58,12 +59,26 @@ export default function Camera() {
       strip.insertBefore(link, strip.firstChild);
     };
   
+    const flipCamera = () => {
+
+      var element = document.getElementById("player");
+      if(cameraMode == 'environment') 
+      {
+        
+        element.classList.remove("player");
+        setFlipCamera('user')
+      }
+      else { 
+        element.classList.add("player");
+        setFlipCamera('environment')
+      }
+    }
     return (
       <div className="container">
       
         <div className="webcam-video">
           <div className="col-md-12">
-          <video width="100%" heigth="300px" onCanPlay={() => paintToCanvas()} ref={videoRef} className="player text-center">
+          <video width="100%" heigth="300px" onCanPlay={() => paintToCanvas()} ref={videoRef} id="player" className="player text-center">
             <source src="path-to-video.mp4#t=0.001" type="video/mp4" />
           </video>
               {/* <video width="100%" heigth="300px"
@@ -82,7 +97,7 @@ export default function Camera() {
             </form>
           </div>
           <div className="col-md-6">
-
+          <button onClick={() => flipCamera()} className="btn btn-info">Flip Camera</button>&nbsp;
           <button onClick={() => takePhoto()} className="btn btn-info">Take a photo</button>&nbsp;
           {
               downloadLink && name ?  <a href={downloadLink ?? '#'} className="btn btn-success" download={name}>Download</a> : <a className="btn btn-danger" disabled >Download</a>
